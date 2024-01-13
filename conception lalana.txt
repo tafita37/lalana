@@ -1,0 +1,68 @@
+Metier :
+	- Classe :
+		- EtatPk :
+			- int niveauEtatPk
+			- String nomEtatPk
+
+			- public EtatPk[] getAllEtatPk(Connection con)
+
+		- Traitement :
+			- String idTraitement
+			- String nomTraitement
+			- EtatPk objectif
+			- EtatPk debut
+			- EtatPk fin
+			- double prix
+
+			- public void newTraitement(Connection con)
+			- public static double sommePrix(Traitement[] listeTraitement)
+
+		- Pk :
+			- String idPk
+			- double debutKm
+			- double finKm
+			- Route route
+			- EtatPk etatPk
+
+		- Route :
+			- String idRoute
+			- String nomRoute
+			- Pk[] listePk
+
+			- public void newRoute(Connection con)
+			- public Route[] getListeRoute(Connection con)
+			- public static Route getRouteById(Connection con, String idRoute)
+			- public Traitement[] getTraitementNecessaire()
+			- public double getCoutTotalTraitement()
+
+		- Priorite : 
+			- int idPriorite
+			- String nomPriorite
+
+			- public Priorite[] getAllPriorite(Connection con)
+			- public static Priorite getPrioriteById(Connection con, String idPriorite)
+			- public Pk[] getPrioritePk(Connection con, Route route)
+
+		- Reparation :
+			- String idReparation
+			- Priorite choix
+			- Timestamp dateHeureReparation
+			- Pk[] listeAbime
+			- double budget
+
+			- public void newReparationTable(Connection con)
+			- public Reparation getLastReparation(Connection con)
+			- public void newReparationTraitement(Connection con)
+			- public void newReparation(Connection con)
+			- public Dent[] ordonnerDentTraiter(Connection con)
+			- public Dent[] getDentTraitable(Connection con)
+
+Bases :
+	- Tables :
+		- etat_pk(id_etat_pk, nom_etat_pk)
+		- traitement(id_traitement, nom_traitement, id_objectif, id_debut, id_fin)
+		- route(id_route, nom_route)
+		- pk(id_pk, debut_pk, fin_pk, id_route)
+		- priorite(id_priorite, nom_priorite)
+		- reparation(id_reparation, id_priorite, date_heure_reparation, budget)
+		- reparation_pk(id_reparation, id_pk)
